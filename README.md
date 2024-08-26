@@ -1,6 +1,6 @@
 # Running benchmarks
 
-Run all commands from this directory.
+_⚠️ This repo was originally a directory in the root of https://github.com/edin-dal/sdql – scripts may assume this directory structure._
 
 ## Setup
 
