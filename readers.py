@@ -15,10 +15,11 @@ DIR: Final[str] = os.path.dirname(os.path.realpath(__file__))
 SDQL_RESULTS_DIR: Final[str] = os.path.normpath(
     os.path.join(DIR, "../src/test/tpch/results/SF_1")
 )
-SDQL_CSVS_DIR: Final[str] = os.path.join(DIR, "sdql")
-DUCKDB_CSVS_DIR: Final[str] = os.path.join(DIR, "duckdb")
-HYPER_CSVS_DIR: Final[str] = os.path.join(DIR, "hyper")
-SDQLPY_PATH = os.path.join(DIR, "sdqlpy_benchmarks.txt")
+RESULT_DIR: Final[str] = os.path.join(DIR, "results")
+SDQL_CSVS_DIR: Final[str] = os.path.join(RESULT_DIR, "sdql")
+DUCKDB_CSVS_DIR: Final[str] = os.path.join(RESULT_DIR, "duckdb")
+HYPER_CSVS_DIR: Final[str] = os.path.join(RESULT_DIR, "hyper")
+SDQLPY_PATH = os.path.join(RESULT_DIR, "sdqlpy_benchmarks.txt")
 
 
 def read_sdql_csvs(indices: Iterable[int]) -> list[pd.DataFrame]:

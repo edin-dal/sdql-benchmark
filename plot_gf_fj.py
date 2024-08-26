@@ -19,6 +19,7 @@ SECS_TO_MS: Final[int] = 1_000
 DROP_COLS: set[str] = {"vectorize", "optimize", "strategy"}
 
 FILE_DIR: Final[str] = os.path.dirname(os.path.realpath(__file__))
+RESULTS_DIR: Final[str] = os.path.join(FILE_DIR, "results")
 SCRIPTS_DIR: Final[str] = os.path.join(FILE_DIR, "scripts")
 DTYPES: Final[dict[str, Any]] = {QUERY_COL: "string", RUNTIME_COL: int}
 
@@ -34,8 +35,8 @@ class Compare(Enum):
 
 
 def read_job_results(algo: Algo) -> pd.DataFrame:
-    job_data_dir: Final[str] = os.path.join(FILE_DIR, f"{algo.value}_results")
-    job_results: Final[str] = os.path.join(FILE_DIR, f"{algo.value}_results.csv")
+    job_data_dir: Final[str] = os.path.join(RESULTS_DIR, f"{algo.value}_results")
+    job_results: Final[str] = os.path.join(RESULTS_DIR, f"{algo.value}_results.csv")
 
     if not Path(job_data_dir).is_dir():
         subprocess.call(f"./codegen_job.sh {algo.value} 5", shell=True, cwd=SCRIPTS_DIR)
@@ -51,8 +52,8 @@ def read_job_results(algo: Algo) -> pd.DataFrame:
 # FJ: 5 iterations were ran for https://github.com/edin-dal/wcoj
 # GJ: 5 iterations were ran for https://github.com/edin-dal/sdql/tree/wcoj
 def read_wcoj_results(algo: Algo) -> pd.DataFrame:
-    wcoj_data_dir: Final[str] = os.path.join(FILE_DIR, f"wcoj_{algo.value}_results")
-    wcoj_results: Final[str] = os.path.join(FILE_DIR, f"wcoj_{algo.value}_results.csv")
+    wcoj_data_dir: Final[str] = os.path.join(RESULTS_DIR, f"wcoj_{algo.value}_results")
+    wcoj_results: Final[str] = os.path.join(RESULTS_DIR, f"wcoj_{algo.value}_results.csv")
 
     if not Path(wcoj_results).is_file():
         write_results_frame(wcoj_data_dir, wcoj_results)
@@ -99,7 +100,7 @@ def get_ms(s: str, regex: re.Pattern) -> int:
 # "We therefore implement a Generic Join baseline ourselves,
 #  by modifying Free Join to fully construct all tries, and removing vectorization."
 def read_free_join_results(algo: Algo) -> pd.DataFrame:
-    with open(os.path.join(FILE_DIR, f"{algo.value.lower()}.json")) as f:
+    with open(os.path.join(RESULTS_DIR, f"{algo.value.lower()}.json")) as f:
         data = json.load(f)
     avg = lambda v: round(SECS_TO_MS * mean(v)) if isinstance(v, list) else v
     avg_dict = lambda d: {k: avg(v) for k, v in d.items() if k not in DROP_COLS}
