@@ -8,5 +8,5 @@ for file in ../progs/job/$1/*.sdql; do
   no_ext="${name%.*}"
   echo $no_ext
   echo "Running $no_ext"
-  ./$no_ext.out | grep --text " ms" > ../benchmarks/results/$1_results/$no_ext.result
+  ./$no_ext.out | grep --text " ms" > ../benchmarks/timings/$1_results/$no_ext.result
 done
