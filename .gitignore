@@ -1,3 +1,5 @@
+benchmarks.csv
+
 *.hyper
 
 # ignores directories and symbolic links
