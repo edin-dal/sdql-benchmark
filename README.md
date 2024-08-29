@@ -9,7 +9,7 @@ Create a symlink to the main SDQL repository:
 ```sh
 # clone the sdql repo somewhere (e.g. home directory)
 cd ~ && git clone https://github.com/edin-dal/sdql/
-# create a symlink here to SDQL programs directory
+# create a symlink here to the SDQL programs directory
 cd - && ln -s ~/sdql/progs progs
 ```
 
@@ -33,7 +33,7 @@ Get the required Python version:
 export VERSION=$(cat pyproject.toml| grep -Poi '^python = "\K(\d+.\d+.\d+)')
 ```
 
-On macOs run it as `ggrep` after `brew install grep` to use GNU grep:
+On macOS run it as `ggrep` after `brew install grep` to use GNU grep:
 
 ```sh
 export VERSION=$(cat pyproject.toml| ggrep -Poi '^python = "\K(\d+.\d+.\d+)')
@@ -68,7 +68,7 @@ poetry install
 
 ## Run
 
-Make sure you have datasets in `../datasets/tpch/`.
+Make sure you have datasets in `progs/../datasets/tpch/`.
 
 We suggest generating them with `s -1`.
 
