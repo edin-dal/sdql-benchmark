@@ -1,6 +1,7 @@
 import pandas as pd
 
 from benches import benchmark_duckdb, benchmark_hyper, benchmark_sdql
+from check_progs import check_progs
 from extractor import extract_hyper_log_times
 from queries import *
 from validation import validate_vs_duckdb, validate_vs_hyper
@@ -40,6 +41,8 @@ INDICES_AND_QUERIES = (
 )
 
 if __name__ == "__main__":
+    check_progs()
+
     indices = [i for i, _ in INDICES_AND_QUERIES]
     queries = [q for _, q in INDICES_AND_QUERIES]
 

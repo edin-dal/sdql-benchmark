@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 from benches import RE_RUNTIME
+from check_progs import check_progs
 
 QUERY_COL = "Query"
 RUNTIME_COL = "Runtime (ms)"
@@ -53,7 +54,9 @@ def read_job_results(algo: Algo) -> pd.DataFrame:
 # GJ: 5 iterations were ran for https://github.com/edin-dal/sdql/tree/wcoj
 def read_wcoj_results(algo: Algo) -> pd.DataFrame:
     wcoj_data_dir: Final[str] = os.path.join(TIMINGS_DIR, f"wcoj_{algo.value}_results")
-    wcoj_results: Final[str] = os.path.join(TIMINGS_DIR, f"wcoj_{algo.value}_results.csv")
+    wcoj_results: Final[str] = os.path.join(
+        TIMINGS_DIR, f"wcoj_{algo.value}_results.csv"
+    )
 
     if not Path(wcoj_results).is_file():
         write_results_frame(wcoj_data_dir, wcoj_results)
@@ -126,6 +129,7 @@ COMPARE: Compare = Compare.FREE_JOIN
 
 
 if __name__ == "__main__":
+    check_progs()
     job_df = read_job_results(ALGO)
     read = read_free_join_results if COMPARE == Compare.FREE_JOIN else read_wcoj_results
     compare_df = read(ALGO)
