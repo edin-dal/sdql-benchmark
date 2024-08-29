@@ -1,3 +1,5 @@
+./check_progs.sh || exit
+
 qs=(
   1
   2
@@ -23,7 +25,7 @@ qs=(
   22
 )
 
-cd ../../generated/
+cd "$(realpath ../progs/)/../generated" || exit
 for i in "${qs[@]}"
 do
   rm -f q$i.cpp
