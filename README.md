@@ -77,3 +77,9 @@ Then run the benchmarks as follows:
 ```sh
 export PYTHONPATH=. && python __main__.py
 ```
+
+[//]: # (note: intentionally "hiding" this from the public README
+For JOB benchmarks, run `export PYTHONPATH=. && python plot_gf_fj.py`.
+They require converting from Parquet to CSV the datasets of https://github.com/SIGMOD23p561/free-join.
+The results are compared and plotted against those stored in the `timings` directory, which you need to regenerate on your machine using the https://github.com/edin-dal/WCOJ or free-join repositories.
+)
