@@ -1,4 +1,6 @@
-cd ../../generated/
+./check_progs.sh || exit
+
+cd "$(realpath ../progs/)/../generated" || exit
 
 for file in ../progs/job/$1/*.sdql; do
   name=${file##*/}

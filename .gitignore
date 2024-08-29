@@ -1,5 +1,9 @@
 *.hyper
 
+# ignores directories and symbolic links
+progs
+progs/
+
 .python-version
 
 # Byte-compiled / optimized / DLL files

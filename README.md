@@ -1,8 +1,17 @@
 # Running benchmarks
 
-_⚠️ This repo was originally a directory in the root of https://github.com/edin-dal/sdql – scripts may assume this directory structure._
-
 ## Setup
+
+### Link the SDQL repository
+
+Create a symlink to the main SDQL repository:
+
+```sh
+# clone the sdql repo somewhere (e.g. home directory)
+cd ~ && git clone https://github.com/edin-dal/sdql/
+# create a symlink here to SDQL programs directory
+cd - && ln -s ~/sdql/progs progs
+```
 
 ### Install Python version and virtualenv
 
