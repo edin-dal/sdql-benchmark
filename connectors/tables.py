@@ -2,11 +2,11 @@ import os
 from dataclasses import dataclass, field
 from typing import Final
 
-
-TPCH_DATASETS: Final[str] = os.path.normpath(
-    os.path.join(os.path.dirname(os.path.realpath(__file__)), "../../datasets/tpch")
-)
-
+FILE_DIR: Final[str] = os.path.dirname(os.path.realpath(__file__))
+BENCH_REPO_ROOT: Final[str] = os.path.normpath(os.path.join(FILE_DIR, ".."))
+PROGS_DIR : Final[str] = os.path.realpath(os.path.join(BENCH_REPO_ROOT, "progs"))
+SDQL_REPO_ROOT: Final[str] = os.path.normpath(os.path.join(PROGS_DIR, ".."))
+TPCH_DATASETS: Final[str] = os.path.join(SDQL_REPO_ROOT, "datasets", "tpch")
 
 @dataclass(frozen=True)
 class Table:
