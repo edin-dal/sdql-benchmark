@@ -54,7 +54,7 @@ if __name__ == "__main__":
     # note: modify the .sh scripts to avoid running all 22 queries
     res[f"SDQL (mean ms)"] = pd.Series(benchmark_sdql(indices, RUNS))
 
-    # just for displaying sdqlpy benchmarks ran on local dev machine (always a mean)
+    # just for displaying sdqlpy benchmarks ran on local dev machine
     # from readers import read_sdqlpy_benchmarks
     # res["sdqlpy (mean ms)"] = pd.Series(read_sdqlpy_benchmarks(indices))
 
