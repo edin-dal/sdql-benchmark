@@ -15,16 +15,21 @@ cd - && ln -s ~/sdql/progs progs
 
 ### Install Python version and virtualenv
 
-Install `pyenv`:
+Install `pyenv` and `pyenv-virtualenv`:
 
 ```sh
 curl https://pyenv.run | bash
+# follow these instructions to install pyenv-virtualenv
+# https://github.com/pyenv/pyenv-virtualenv?tab=readme-ov-file#installing-as-a-pyenv-plugin
 ```
 
 On macOS:
 
 ```sh
 brew install pyenv
+brew install pyenv-virtualenv
+# follow these instructions if you get "Failed to activate virtualenv"
+# https://github.com/pyenv/pyenv-virtualenv/issues/387
 ```
 
 Get the required Python version:
