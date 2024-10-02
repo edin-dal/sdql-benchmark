@@ -4,7 +4,7 @@ import re
 import subprocess
 from enum import Enum
 from pathlib import Path
-from statistics import mean
+from statistics import geometric_mean, mean
 from typing import Any, Final
 
 import matplotlib.pyplot as plt
@@ -136,10 +136,8 @@ if __name__ == "__main__":
     df = pd.merge(
         compare_df, job_df, how="outer", on="Query", suffixes=(" expected", " actual")
     ).set_index("Query")
-    df["Diff (ms)"] = df[df.columns[1]] - df[df.columns[0]]
-    df["Diff (%)"] = (100 * df["Diff (ms)"] / df[df.columns[0]]).round().astype(int)
-    pct_diff_summary = pd.DataFrame(df[df.columns[3]].describe().round().astype(int)).T
-    print(pct_diff_summary)
+    df["Performance Improvement"] = (df[df.columns[0]] / df[df.columns[1]]).round(2)
+    print("Geometric Mean", round(geometric_mean(df["Performance Improvement"]), 2))
     print()
-    print(df.sort_values(by=df.columns[3], ascending=False))
+    print(df.sort_values(by=df.columns[2], ascending=False))
     plot(df, ALGO, COMPARE)
